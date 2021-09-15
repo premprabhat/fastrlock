@@ -18,4 +18,5 @@ jobs:
         python-version: 3.6
     - name: Install dependencies
       run: |
+        pip install cython
         make wheel_manylinux
