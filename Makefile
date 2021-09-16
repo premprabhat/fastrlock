@@ -31,9 +31,9 @@ build:
 wheel:
 	$(PYTHON) setup.py $(SETUPFLAGS) bdist_wheel $(PYTHON_WITH_CYTHON)
 
-wheel_manylinux: sdist wheel_manylinux64 wheel_manylinux32 wheel_manylinuxaarch64
+wheel_manylinux: sdist wheel_manylinux64 wheel_manylinux32
 
-wheel_manylinuxaarch64 wheel_manylinux32 wheel_manylinux64: dist/$(PACKAGENAME)-$(VERSION).tar.gz
+wheel_manylinux32 wheel_manylinux64: dist/$(PACKAGENAME)-$(VERSION).tar.gz
 	echo "Building wheels for $(PACKAGENAME) $(VERSION)"
 	mkdir -p wheelhouse$(subst wheel_manylinux,,$@)
 	time docker run --rm -t \
