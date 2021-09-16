@@ -11,7 +11,7 @@ MANYLINUX_IMAGE_X86_64=quay.io/pypa/manylinux2010_x86_64
 MANYLINUX_IMAGE_686=quay.io/pypa/manylinux2010_i686
 MANYLINUX_IMAGE_aarch64=quay.io/pypa/manylinux2014_aarch64
 
-.PHONY: all version inplace sdist build clean wheel_manylinux wheel_manylinux32 wheel_manylinux64 wheel_manylinuxaarch64 wheel
+.PHONY: all version inplace sdist build clean wheel_manylinux wheel_manylinux32 wheel_manylinux64 wheel
 
 all: inplace
 
@@ -41,7 +41,7 @@ wheel_manylinux32 wheel_manylinux64: dist/$(PACKAGENAME)-$(VERSION).tar.gz
 		-e CFLAGS="-O3 -g1 -mtune=generic -pipe -fPIC" \
 		-e LDFLAGS="$(LDFLAGS) -fPIC" \
 		-e WHEELHOUSE=wheelhouse$(subst wheel_manylinux,,$@) \
-		$(if $(patsubst %32,,$@),$(MANYLINUX_IMAGE_aarch64),$(MANYLINUX_IMAGE_X86_64),$(MANYLINUX_IMAGE_686)) \
+		$(if $(patsubst %32,,$@),$(MANYLINUX_IMAGE_X86_64),$(MANYLINUX_IMAGE_686)) \
 		bash -c '\
 			rm -fr $(PACKAGENAME)-$(VERSION)/; \
 			tar zxf /io/$< && cd $(PACKAGENAME)-$(VERSION)/ || exit 1; \
