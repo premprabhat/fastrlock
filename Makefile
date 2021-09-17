@@ -67,7 +67,7 @@ wheel_manylinuxaarch64: dist/$(PACKAGENAME)-$(VERSION).tar.gz
 		-e CFLAGS="-O3 -g1 -mtune=generic -pipe -fPIC" \
 		-e LDFLAGS="$(LDFLAGS) -fPIC" \
 		-e WHEELHOUSE=wheelhouse$(subst wheel_manylinux,,$@) \
-		$(if $(patsubst %aarch64,,$@),$(MANYLINUX_IMAGE_aarch64)) \
+		$(MANYLINUX_IMAGE_aarch64) \
 		bash -c '\
 			rm -fr $(PACKAGENAME)-$(VERSION)/; \
 			tar zxf /io/$< && cd $(PACKAGENAME)-$(VERSION)/ || exit 1; \
