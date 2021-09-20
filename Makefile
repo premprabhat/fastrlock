@@ -62,6 +62,7 @@ wheel_manylinux32 wheel_manylinux64 wheel_manylinuxaarch64: dist/$(PACKAGENAME)-
 wheel_manylinuxaarch64: dist/$(PACKAGENAME)-$(VERSION).tar.gz
 	echo "Building wheels for $(PACKAGENAME) $(VERSION)"
 	mkdir -p wheelhouse$(subst wheel_manylinux,,$@)
+	docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 	time docker run --rm -t \
 		-v $(shell pwd):/io \
 		-e CFLAGS="-O3 -g1 -mtune=generic -pipe -fPIC" \
