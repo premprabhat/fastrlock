@@ -22,5 +22,5 @@ jobs:
     - name: Install dependencies
       run: |
         pip install cython
-        apt-get -y install gcc
+        sudo apt-get -y install gcc
         make wheel_manylinux
