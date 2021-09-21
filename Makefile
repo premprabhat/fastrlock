@@ -71,7 +71,7 @@ wheel_manylinuxaarch64: dist/$(PACKAGENAME)-$(VERSION).tar.gz
 		bash -c '\
 			rm -fr $(PACKAGENAME)-$(VERSION)/; \
 			tar zxf /io/$< && cd $(PACKAGENAME)-$(VERSION)/ || exit 1; \
-			for PYBIN in /opt/python/*/bin; do \
+			for PYBIN in /opt/python/cp*/bin; do \
 				PYVER="$$($$PYBIN/python -V)"; \
 				PROFDIR="prof-$${PYVER// /_}"; \
 				echo $$PYVER; \
