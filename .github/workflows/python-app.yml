@@ -22,5 +22,6 @@ jobs:
     - name: Install dependencies
       run: |
         pip install cython
-        sudo apt-get -y install gcc libc6
+        #sudo apt-get -y install gcc libc6
+        docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
         make wheel_manylinux
